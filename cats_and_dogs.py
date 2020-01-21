@@ -141,10 +141,3 @@ def create_cats_and_dogs_chromosome():
 hpo_stratergy = hpo_genetic_algorithm.GeneticAlgorithm(10, 15, create_cats_and_dogs_chromosome)
 hpo_instance = hpo.Hpo(hpo_stratergy, model)
 hpo_instance.execute()
-
-timestamp = datetime.now().strftime("%d_%b_%Y__%H_%M_%S")
-history_file_path = os.path.join(os.getcwd(), "generation_history_%s.json" % timestamp)
-print("Outputting generation results to %s" % history_file_path)
-history_file = open(history_file_path, "w+")
-history_file.write(json.dumps(hpo_stratergy.generation_history()))
-history_file.close()
