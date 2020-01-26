@@ -82,7 +82,7 @@ model_layers = [
     #9 - Dropout - Optimise
     hpo.Layer(layer_name="hidden_layer_9", layer_type=tf.keras.layers.Dropout, 
     hyperparameters=[
-        hpo.Parameter(name="rate", value=0.2, value_range=np.arange(0.0, 1.0, 0.01).tolist(), constraints=None)
+        hpo.Parameter(name="rate", value=0.2, value_range=np.arange(0.0, 0.5, 0.01).tolist(), constraints=None)
     ], 
     parameters=[
         hpo.Parameter(name="seed", value=42)
@@ -100,7 +100,7 @@ model_layers = [
     #11 - Dropout - Optimise
     hpo.Layer(layer_name="hidden_layer_11", layer_type=tf.keras.layers.Dropout, 
     hyperparameters=[
-        hpo.Parameter(name="rate", value=0.2, value_range=np.arange(0.0, 1.0, 0.01).tolist(), constraints=None)
+        hpo.Parameter(name="rate", value=0.2, value_range=np.arange(0.0, 0.5, 0.01).tolist(), constraints=None)
     ], 
     parameters=[
         hpo.Parameter(name="seed", value=42)
@@ -117,7 +117,7 @@ model_layers = [
     #13 - Dropout - Optimise
     hpo.Layer(layer_name="hidden_layer_12", layer_type=tf.keras.layers.Dropout, 
     hyperparameters=[
-        hpo.Parameter(name="rate", value=0.2 , value_range=np.arange(0.0, 1.0, 0.01).tolist(), constraints=None)
+        hpo.Parameter(name="rate", value=0.2 , value_range=np.arange(0.0, 0.5, 0.01).tolist(), constraints=None)
     ], 
     parameters=[
         hpo.Parameter(name="seed", value=42)
@@ -126,7 +126,7 @@ model_layers = [
     #14 - Dense - Optimise
     hpo.Layer(layer_name="output_layer", layer_type=tf.keras.layers.Dense, 
     hyperparameters=[
-        hpo.Parameter(name="activation", value="relu", value_range=["relu", "tanh", "sigmoid"], constraints=None)#need to add more
+        hpo.Parameter(name="activation", value="sigmoid", value_range=["relu", "tanh", "sigmoid"], constraints=None)#need to add more
     ], 
     parameters=[
         hpo.Parameter(name="units", value=2)

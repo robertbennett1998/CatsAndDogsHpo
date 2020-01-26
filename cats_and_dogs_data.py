@@ -25,7 +25,7 @@ def get_datasets(img_width, img_height, training_batch_size, validation_batch_si
     def flip_image_xy(img, label):
         return tf.image.flip_left_right(tf.image.flip_up_down(img)), label
 
-    training_files, validation_files, test_files, training_image_count, validation_image_count, test_image_count = data_preprocessing.create_filepath_datasets_from_directory(os.path.join(os.getcwd(), "../data/dogs-vs-cats/train/"), "*.jpg")
+    training_files, validation_files, test_files, training_image_count, validation_image_count, test_image_count = data_preprocessing.create_filepath_datasets_from_directory(os.path.join(os.getcwd(), "../../data/dogs-vs-cats/train/"), "*.jpg")
 
     training_images = data_preprocessing.transform_dataset(training_files, get_jpeg_from_filepath)
     validation_images = data_preprocessing.transform_dataset(validation_files, get_jpeg_from_filepath)
