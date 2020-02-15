@@ -83,12 +83,12 @@ class CatsAndDogsData(hpo.Data):
             
         self._test_data = data_preprocessing.prepare_dataset(test_images, self._test_batch_size, cache=os.path.join(self._cache_path, "test_images.tfcache"))
 
-        self._training_image_count = 5000
-        self._training_data = self._training_data.take(self._training_image_count)
+        # self._training_image_count = 5000
+        # self._training_data = self._training_data.take(self._training_image_count)
 
 
-        self._validation_image_count = 2000
-        self._valdiation_data = self._valdiation_data.take(self._validation_image_count)
+        # self._validation_image_count = 2000
+        # self._valdiation_data = self._valdiation_data.take(self._validation_image_count)
 
     def training_steps(self):
         return self._training_image_count // self._training_batch_size
