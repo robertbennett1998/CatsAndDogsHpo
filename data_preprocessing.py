@@ -14,7 +14,7 @@ def create_filepath_datasets_from_directory(data_dir, pattern, training_split=0.
     try:
         full_filepaths_ds = tf.data.Dataset.list_files(str(os.path.join(data_dir, pattern)), seed=randomise_files_seed, shuffle=randomise_files)
     except tf.errors.NotFoundError:
-        raise Exception("Failed to list files. Pattern (", os.join(data_dir, pattern), ") not matched. Check the directory exists and contains files.")
+        raise Exception("Failed to list files. Pattern (", os.path.join(data_dir, pattern), ") not matched. Check the directory exists and contains files.")
 
     training_filepaths_ds = full_filepaths_ds.take(training_file_count)
 
