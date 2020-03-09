@@ -2,7 +2,7 @@ import json
 import os
 import matplotlib.pyplot as plt
 
-filepaths = [os.path.join(os.getcwd(), "generation_history_13_Feb_2020__14_54_47.json"), os.path.join(os.getcwd(), "generation_history_14_Feb_2020__10_45_28.json")]
+filepaths = [os.path.join(os.getcwd(), "generation_history_08_Mar_2020__11_02_36.json")]
 
 legend = list()
 i = 0
@@ -22,6 +22,8 @@ for filepath in filepaths:
     plt.plot(avg_fitnesses)
     plt.plot(best_fitnesses)
     i += 1
+
+print(best_fitnesses)
 
 plt.legend(legend)
 plt.xlabel("Generation")
