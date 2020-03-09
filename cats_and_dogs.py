@@ -9,7 +9,14 @@ import hpo
 import hpo.strategies.genetic_algorithm as hpo_strategy_ga
 import ray
 
+import os
+os.environ['CUDA_VISIBLE_DEVICES'] = "1"
+
+print(tf.test.is_gpu_available())
+
 ray.init()
+
+cache_path="/home/596616/dissertation/src/CatsAndDogsHpo/.cache"
 
 model_layers = [
     #0 - Conv 2D - Optimise
@@ -147,14 +154,14 @@ print(model_configuration.number_of_hyperparameters())
 model_configuration.hyperparameter_summary(True)
 
 def construct_cats_and_dogs_data():
-    return cats_and_dogs_data.CatsAndDogsData(os.path.join(os.getcwd(), ".cache"), True, True, True, 100, 100, 100)
+    return cats_and_dogs_data.CatsAndDogsData(cache_path, True, True, True, 100, 100, 100)
 
 def construct_chromosome():
     return hpo.strategies.genetic_algorithm.DefaultChromosome(model_configuration)
 
-strategy = hpo_strategy_ga.GeneticAlgorithm(population_size=30, max_iterations=8, chromosome_type=construct_chromosome, survivour_selection_stratergy="roulette")
+strategy = hpo_strategy_ga.GeneticAlgorithm(population_size=30, max_iterations=8, chromosome_type=construct_chromosome, survivour_selection_stratergy="threshold")
 strategy.mutation_strategy().mutation_probability(0.05)
-strategy.survivour_selection_strategy().survivour_percentage(0.7)
+strategy.survivour_selection_strategy().threshold(0.7)
  
 hpo_instance = hpo.Hpo(model_configuration, construct_cats_and_dogs_data, strategy)
 

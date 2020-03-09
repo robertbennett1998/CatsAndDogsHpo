@@ -50,7 +50,7 @@ class CatsAndDogsData(hpo.Data):
         def flip_image_xy(img, label):
             return tf.image.flip_left_right(tf.image.flip_up_down(img)), label
 
-        training_files, validation_files, test_files, self._training_image_count, self._validation_image_count, self._test_image_count = data_preprocessing.create_filepath_datasets_from_directory(os.path.join(os.getcwd(), "../../data/dogs-vs-cats/train/"), "*.jpg")
+        training_files, validation_files, test_files, self._training_image_count, self._validation_image_count, self._test_image_count = data_preprocessing.create_filepath_datasets_from_directory("/home/596616/dissertation/data/dogs-vs-cats/train/", "*.jpg")
 
         training_images = data_preprocessing.transform_dataset(training_files, get_jpeg_from_filepath)
         validation_images = data_preprocessing.transform_dataset(validation_files, get_jpeg_from_filepath)
