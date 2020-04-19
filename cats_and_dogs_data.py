@@ -7,7 +7,6 @@ import hpo
 class CatsAndDogsData(hpo.Data):
     def __init__(self, cache_path, augment_training_data, augment_validation_data, augment_test_data, training_batch_size, validation_batch_size, test_batch_size):
         super().__init__()
-        
         self._augment_training_data = augment_training_data
         self._augment_validation_data = augment_validation_data
         self._augment_test_data = augment_test_data
@@ -27,6 +26,9 @@ class CatsAndDogsData(hpo.Data):
         self._training_data = None
         self._valdiation_data = None
         self._test_data = None
+
+        if not os.path.exists(self._cache_path):
+            os.mkdir(self._cache_path)
 
     def load(self):
         def get_jpeg_from_filepath(path):

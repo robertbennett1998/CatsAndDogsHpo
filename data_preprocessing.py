@@ -38,6 +38,9 @@ def augment_dataset(dataset, transformation_function, augmented_dataset=None):
 def prepare_dataset(dataset, batch_size, cache=True, repeat=True, prefetch=True, shuffle=True, shuffle_seed=42, shuffle_buffer_size=1000):
     if (cache):
         if (isinstance(cache, str)):
+            if not os.path.exists(cache):
+                os.mkdir(cache)
+
             print("Opening cache or creating (%s)." % (cache))
             dataset = dataset.cache(cache)
         else:
