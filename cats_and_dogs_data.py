@@ -16,8 +16,8 @@ class CatsAndDogsData(hpo.Data):
         self._test_batch_size = test_batch_size
         
         self._class_labels = ["cat", "dog"]
-        self._img_width = 200
-        self._img_height = 200
+        self._img_width = 100
+        self._img_height = 100
 
         self._training_image_count = 0
         self._validation_image_count = 0

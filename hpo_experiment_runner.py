@@ -80,6 +80,6 @@ def run_with_live_graphs(configured_hpo_instance, save_file_path=None):
     hpo_thread.join()
 
     if save_file_path is not None:
-        results.save(os.path.join(os.getcwd(), "results.res"))
+        results.save(os.path.join(os.getcwd(), save_file_path))
 
     return best_result, results
