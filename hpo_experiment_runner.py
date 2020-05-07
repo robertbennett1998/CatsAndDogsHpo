@@ -8,12 +8,12 @@ ray.init()
 
 
 def run(configured_hpo_instance, save_file_path=None):
-    best_result, results = configured_hpo_instance.execute(result_added_hook=add_result_to_graph)
+    results = configured_hpo_instance.execute(result_added_hook=add_result_to_graph)
 
     if save_file_path is not None:
         results.save(os.path.join(os.getcwd(), save_file_path))
 
-    return best_result, results
+    return results
 
 
 fig, a = plt.subplots(2, 2)
@@ -66,10 +66,9 @@ def update_graph(i):
 
 def run_with_live_graphs(configured_hpo_instance, save_file_path=None):
     def run_hpo():
-        global best_result
         global results
 
-        best_result, results = configured_hpo_instance.execute(result_added_hook=add_result_to_graph)
+        results = configured_hpo_instance.execute(result_added_hook=add_result_to_graph)
 
     hpo_thread = threading.Thread(target=run_hpo)
     hpo_thread.start()
@@ -82,4 +81,4 @@ def run_with_live_graphs(configured_hpo_instance, save_file_path=None):
     if save_file_path is not None:
         results.save(os.path.join(os.getcwd(), save_file_path))
 
-    return best_result, results
+    return results

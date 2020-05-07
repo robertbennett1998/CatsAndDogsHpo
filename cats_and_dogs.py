@@ -7,8 +7,10 @@ import hpo.strategies.random_search
 import hpo_experiment_runner
 import cats_and_dogs_models
 
+data_dir = "/home/rob/dissertation/data/dogs-vs-cats/train/"
+
 def construct_cats_and_dogs_data():
-    return cats_and_dogs_data.CatsAndDogsData(os.path.join(os.getcwd(), ".cache"), True, True, True, 50, 50, 50)
+    return cats_and_dogs_data.CatsAndDogsData(data_dir, os.path.join(os.getcwd(), ".cache"), True, True, True, 50, 50, 50)
 
 
 def construct_chromosome():
@@ -18,7 +20,7 @@ def construct_chromosome():
 def model_exception_handler(e):
     print("Exception occured while training the model.", e)
 
-model_configuration = hpo.ModelConfiguration(optimiser=cats_and_dogs_models.optimiser, layers=cats_and_dogs_models.cnn, loss_function="categorical_crossentropy", number_of_epochs=10)
+model_configuration = hpo.DefaulDLModelConfiguration(optimiser=cats_and_dogs_models.optimiser, layers=cats_and_dogs_models.cnn, loss_function="categorical_crossentropy", number_of_epochs=10)
 
 ####################################
 # Random Search
