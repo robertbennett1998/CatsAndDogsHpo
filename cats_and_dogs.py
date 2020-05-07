@@ -64,4 +64,4 @@ strategy.mutation_strategy().mutation_probability(0.05)
 strategy.survivour_selection_strategy().threshold(0.9)
 hpo_instance = hpo.Hpo(model_configuration, construct_cats_and_dogs_data, strategy, model_exception_handler=model_exception_handler)
 
-hpo_experiment_runner.run(hpo_instance, os.path.join(os.getcwd(), "cats_and_dogs_hpo_genetic_algorithm_roulette.results"))
+hpo_experiment_runner.run(hpo_instance, os.path.join(os.getcwd(), "cats_and_dogs_hpo_genetic_algorithm_threshold.results"))
