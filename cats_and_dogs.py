@@ -13,8 +13,8 @@ def construct_cats_and_dogs_data():
     return cats_and_dogs_data.CatsAndDogsData(data_dir, os.path.join(os.getcwd(), ".cache"), True, True, True, 50, 50, 50)
 
 
-def construct_chromosome():
-    return hpo.strategies.genetic_algorithm.DefaultChromosome(model_configuration)
+def construct_chromosome(remote_model_type):
+    return hpo.strategies.genetic_algorithm.DefaultChromosome(model_configuration, remote_model_type)
 
 
 def model_exception_handler(e):
